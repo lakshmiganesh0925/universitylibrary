@@ -3,7 +3,7 @@ import { Ratelimit } from "@upstash/ratelimit";
 
 const ratelimit = new Ratelimit({
    redis,
-  limiter: Ratelimit.fixedWindow(10, "10 s"),
+  limiter: Ratelimit.fixedWindow(10, "1m"),
   analytics: true,
   prefix: "@upstash/ratelimit",
 });

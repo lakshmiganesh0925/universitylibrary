@@ -9,13 +9,12 @@ import {
   useForm,
   UseFormReturn,
 } from "react-hook-form";
-import { z, ZodType } from "zod";
+import { ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -41,7 +40,7 @@ const AuthForm = <T extends FieldValues>({
   defaultValues,
   onSubmit,
 }: Props<T>) => {
-  const router=useRouter();
+  const router = useRouter();
 
   const isSignIn = type === "SIGN_IN";
 
@@ -53,20 +52,20 @@ const AuthForm = <T extends FieldValues>({
   const handleSubmit: SubmitHandler<T> = async (data) => {
     const result = await onSubmit(data);
 
-    if(result.success){
+    if (result.success) {
       toast({
-        title:"Success",
-        description:isSignIn
-         ?"You have successfully signed in."
-         :"You have successfully signed up."
+        title: "Success",
+        description: isSignIn
+          ? "You have successfully signed in."
+          : "You have successfully signed up.",
       });
 
-      router.push("/")
-    }else{
+      router.push("/");
+    } else {
       toast({
-        title:`Error ${isSignIn ? "signing in" : "signing up"}`,
-        description:result.error ?? "An error occurred.",
-        variant:"destructive",
+        title: `Error ${isSignIn ? "signing in" : "signing up"}`,
+        description: result.error ?? "An error occurred.",
+        variant: "destructive",
       });
     }
   };
@@ -84,9 +83,9 @@ const AuthForm = <T extends FieldValues>({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
-          className="space-y-6 w-full"
+          className="w-full space-y-6"
         >
-          {Object.keys(defaultValues ?? {}).map((field) => (
+          {Object.keys(defaultValues).map((field) => (
             <FormField
               key={field}
               control={form.control}
@@ -98,13 +97,14 @@ const AuthForm = <T extends FieldValues>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <FileUpload 
-                      type="image"
-                      accept="image/*"
-                      placeholder="Upload your ID"
-                      folder="ids"
-                      variant="dark"
-                      onFileChange={field.onChange} />
+                      <FileUpload
+                        type="image"
+                        accept="image/*"
+                        placeholder="Upload your ID"
+                        folder="ids"
+                        variant="dark"
+                        onFileChange={field.onChange}
+                      />
                     ) : (
                       <Input
                         required
