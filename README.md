@@ -131,30 +131,6 @@ and many more, including code architecture and reusability
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/adrianhajdin/university-library-jsm.git
-cd university-library-jsm
-```
-
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
-npm install
-```
 
 **Set Up Environment Variables**
 
@@ -178,12 +154,4 @@ AUTH_SECRET=
 # Required for workflow
 QSTASH_URL=
 QSTASH_TOKEN=
-```
-
-Replace the placeholder values with your actual ImageKit, NeonDB, Upstash. You can obtain these credentials by signing up on the [ImageKit](https://bit.ly/49zmXkt), [NeonDB](https://fyi.neon.tech/1jsm), [Upstash](https://upstash.com/?utm_source), and 
-
-**Running the Project**
-
-```bash
-npm run dev
 ```
